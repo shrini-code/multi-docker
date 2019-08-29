@@ -10,20 +10,20 @@ script:
   - "docker run -e CI=true shrini2018/react-test npm run test"
 
 after_install:
-  -  "docker build -t shrini2018/multi-client ./client"
+  -  docker build -t shrini2018/multi-client ./client
 
-  -  "docker build -t shrini2018/multi-nginx ./nginx"
+  -  docker build -t shrini2018/multi-nginx ./nginx
 
-  -  "docker build -t shrini2018/multi-server ./server"
+  -  docker build -t shrini2018/multi-server ./server
 
-  -  "docker build -t shrini2018/multi-worker ./worker"
+  -  docker build -t shrini2018/multi-worker ./worker
 
   -  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   
-  - docker push shrini2018/multi-client
+  -  docker push shrini2018/multi-client
   
-  - docker push shrini2018/multi-nginx
+  -  docker push shrini2018/multi-nginx
   
-  - docker push shrini2018/multi-server
+  -  docker push shrini2018/multi-server
   
-  - docker push shrini2018/multi-worker
+  -  docker push shrini2018/multi-worker
